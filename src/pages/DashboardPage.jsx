@@ -1,13 +1,19 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {  useNavigate } from 'react-router-dom';
+import { removeUser } from '../redux/features/authSlice';
 
 const DashboardPage = () => {
-    const user = JSON.parse(localStorage.getItem("user"));
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const user = JSON.parse(localStorage.getItem("user"));
+
+
     const handleLogout = () => {
-        localStorage.removeItem("user");// on logout - remove user from local storage 
+        dispatch(removeUser()); // remove user from authslice 
         navigate('/login');
     }
+
     return (
         <div className="min-h-screen bg-gray-100 flex items-center justify-center">
             <div className="bg-white p-6 rounded-lg shadow w-96 text-center">
