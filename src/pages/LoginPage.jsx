@@ -11,10 +11,8 @@ const LoginPage = () => {
     const onSubmit =(data) => {
         if(!user){ 
             alert("user not found! Please sign up first");
-            // navigate('/signup');
             return;
         }
-        console.log(user);
         
         const {email} = JSON.parse(localStorage.getItem("user"));
         if(data.email === email && data.password === user.password){
